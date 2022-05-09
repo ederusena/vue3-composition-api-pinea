@@ -1,18 +1,15 @@
+
 <template>
   <nav>
     <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
+    <RouterLink to="/posts">Posts</RouterLink>
   </nav>
   <RouterView />
-
-  <!-- <router-view v-slot="{ Component }">
-    <KeepAlive>
-      <component :is="Component" />
-    </KeepAlive>
-    <RouterView />
-  </router-view> -->
-
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
 
 <style>
 @import '@/assets/base.css';

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h3>{{ appTitle }}</h3>
+    <h4>{{ counterData.title }}</h4>
     <div>
       <button @click='decreaseCounter' class="btn">-</button>
       <span class="counter">{{ counterData.count }}</span>
@@ -9,7 +10,7 @@
 
     <div class="edit">
       <h4>Edit Counter title:</h4>
-      <input v-model="counterData.title" type="text" v-autofocus>
+      <input v-model="counterData.title" type="text"  v-AutoFocus />
     </div>
   </div>
 </template>
@@ -17,6 +18,7 @@
 <script setup>
 
 import { reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated, onBeforeUpdate, onUpdated } from 'vue'
+import { vAutoFocus } from '@/directives/vAutoFocus'
 const appTitle = 'My Awesome App'
 
 const counterData = reactive({
@@ -37,46 +39,46 @@ const oddOrEven = computed(() => {
 const increaseCounter = () => counterData.count++;
 const decreaseCounter = () => counterData.count--;
 
-onBeforeMount(() => {
-  console.log('before mount')
-})
+// onBeforeMount(() => {
+//   console.log('before mount')
+// })
 
-onMounted(() => {
-  console.log('mounted')
-})
+// onMounted(() => {
+//   console.log('mounted')
+// })
 
-onBeforeUnmount(() => {
-  console.log('before unmount')
-})
+// onBeforeUnmount(() => {
+//   console.log('before unmount')
+// })
 
-onUnmounted(() => {
-  console.log('unmounted')
-})
+// onUnmounted(() => {
+//   console.log('unmounted')
+// })
 
-onActivated(() => {
-  console.log('activated')
-})
+// onActivated(() => {
+//   console.log('activated')
+// })
 
-onDeactivated(() => {
-  console.log('deactivated')
-})
+// onDeactivated(() => {
+//   console.log('deactivated')
+// })
 
-onBeforeUpdate(() => {
-  console.log('before update')
-})
+// onBeforeUpdate(() => {
+//   console.log('before update')
+// })
 
-onUpdated(() => {
-  console.log('updated')
-})
+// onUpdated(() => {
+//   console.log('updated')
+// })
 
-/*
-  Directives
-*/
-const vAutoFocus = {
-  mounted(el) {
-    el.focus()
-  }
-}
+// /*
+//   Directives
+// */
+// const vAutoFocus = {
+//   mounted(el) {
+//     el.focus()
+//   }
+// }
 </script>
 
 <style>
