@@ -17,8 +17,15 @@
 </template>
 
 <script setup>
-
+/**
+ * Imports
+ */
 import { reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated, onBeforeUpdate, onUpdated } from 'vue'
+import { vAutoFocus } from '@/directives/vAutoFocus'
+
+/**
+ * App data
+ */
 const appTitle = 'My Awesome App'
 
 const counterData = reactive({
@@ -36,9 +43,15 @@ const oddOrEven = computed(() => {
   return counterData.count % 2 === 0 ? 'even' : 'odd'
 })
 
+/**
+ * Methods
+ */
 const increaseCounter = () => counterData.count++;
 const decreaseCounter = () => counterData.count--;
 
+/**
+ * Lifecycle hooks
+ */
 onBeforeMount(() => {
   console.log('before mount')
 })
@@ -70,15 +83,6 @@ onBeforeUpdate(() => {
 onUpdated(() => {
   console.log('updated')
 })
-
-/*
-  Directives
-*/
-const vAutoFocus = {
-  mounted(el) {
-    el.focus()
-  }
-}
 </script>
 
 <style>
