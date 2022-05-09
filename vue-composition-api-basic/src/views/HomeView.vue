@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <h3>{{ counterTitle }}</h3>
+    <h3>{{ appTitle }}</h3>
     <div>
       <button @click='decreaseCounter' class="btn">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button @click='increaseCounter' class="btn">+</button>
     </div>
 
