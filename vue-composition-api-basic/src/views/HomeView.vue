@@ -1,27 +1,75 @@
 <template>
   <div class="home">
-    <h3>{{ counterTitle }}</h3>
+    <h2>{{ appTitle }}</h2>
+    <h3>{{ counterData.title }}</h3>
     <div>
       <button @click='decreaseCounter' class="btn">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button @click='increaseCounter' class="btn">+</button>
+      <p>This counter is {{ oddOrEven }}</p>
     </div>
 
     <div class="edit">
       <h4>Edit Counter title:</h4>
-      <input v-model="counterTitle" type="text">
+      <input v-model="counterData.title" type="text">
     </div>
   </div>
 </template>
 
 <script setup>
 
-import { ref } from 'vue'
-const counter = ref(0),
-  counterTitle = ref('My counter')
+import { reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated, onBeforeUpdate, onUpdated } from 'vue'
+const appTitle = 'My Awesome App'
 
-const increaseCounter = () => counter.value++;
-const decreaseCounter = () => counter.value--;
+const counterData = reactive({
+  count: 0,
+  title: 'My counter'
+})
+
+watch(() => counterData.count, (newCount, oldCount) => {
+  if (newCount === 20) {
+    alert('20 is the limit!')
+  }
+})
+
+const oddOrEven = computed(() => {
+  return counterData.count % 2 === 0 ? 'even' : 'odd'
+})
+
+const increaseCounter = () => counterData.count++;
+const decreaseCounter = () => counterData.count--;
+
+onBeforeMount(() => {
+  console.log('before mount')
+})
+
+onMounted(() => {
+  console.log('mounted')
+})
+
+onBeforeUnmount(() => {
+  console.log('before unmount')
+})
+
+onUnmounted(() => {
+  console.log('unmounted')
+})
+
+onActivated(() => {
+  console.log('activated')
+})
+
+onDeactivated(() => {
+  console.log('deactivated')
+})
+
+onBeforeUpdate(() => {
+  console.log('before update')
+})
+
+onUpdated(() => {
+  console.log('updated')
+})
 
 </script>
 

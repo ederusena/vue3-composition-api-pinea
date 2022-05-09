@@ -4,6 +4,14 @@
     <RouterLink to="/about">About</RouterLink>
   </nav>
   <RouterView />
+
+  <!-- <router-view v-slot="{ Component }">
+    <KeepAlive>
+      <component :is="Component" />
+    </KeepAlive>
+    <RouterView />
+  </router-view> -->
+
 </template>
 
 <style>
