@@ -11,7 +11,7 @@
 
     <div class="edit">
       <h4>Edit Counter title:</h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" v-autofocus>
     </div>
   </div>
 </template>
@@ -71,6 +71,14 @@ onUpdated(() => {
   console.log('updated')
 })
 
+/*
+  Directives
+*/
+const vAutoFocus = {
+  mounted(el) {
+    el.focus()
+  }
+}
 </script>
 
 <style>
