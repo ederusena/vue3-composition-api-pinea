@@ -8,7 +8,10 @@
 		<div>
 			<button @click="goHomeIn3Seconds">Go home in 3 seconds!</button>
 		</div>
-		<p><RouterLink to="/posts">&lt; Back!</RouterLink></p>
+		<div>
+			<button @click="goToPostID">Go to the post iD</button>
+		</div>
+		<p><RouterLink :to="`/posts/${id}`">&lt; Back!</RouterLink></p>
 	</div>
 </template>
 
@@ -37,6 +40,15 @@ const goHomeIn3Seconds = () => {
 	setTimeout(() => {
 		router.push({ name: 'home' });
 	}, 3000);
+};
+
+const goToPostID = () => {
+		router.push({
+			name: 'postDetail',
+			params: {
+				id: 'id1'
+			}
+		});
 };
 
 </script>
