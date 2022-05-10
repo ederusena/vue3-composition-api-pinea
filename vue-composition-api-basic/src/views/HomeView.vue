@@ -21,7 +21,8 @@ import {
   reactive,
   computed,
   watch,
-  onMounted
+  onMounted,
+  nextTick
 } from "vue";
 
 import { vAutoFocus } from "@/directives/vAutoFocus";
@@ -51,7 +52,12 @@ const oddOrEven = computed(() => {
   return counterData.count % 2 === 0 ? "even" : "odd";
 });
 
-const increaseCounter = () => counterData.count++;
+const increaseCounter = () => {
+  counterData.count++;
+  nextTick(() => {
+    console.log("Next tick! -> So something whencounter has updated in the dom");
+  })
+}
 const decreaseCounter = () => counterData.count--;
 
 // onBeforeMount(() => {
