@@ -5,10 +5,19 @@
 			<slot />
 			<button @click="$emit('update:showVModal', false)">Hide modal</button>
 		</div>
+		{{ userState.username }}
 	</teleport>
 </template>
 
 <script setup>
+/**
+ * import
+ */
+import { inject } from 'vue'
+
+/**
+ * props
+ */
 defineProps({
   showVModal: {
     type: Boolean,
@@ -20,6 +29,14 @@ defineProps({
 	},
 });
 
+/**
+ * inject
+ */
+const userState = inject('userState')
+
+/**
+ * emits
+ */
 defineEmits(['update:showVModal'])
 </script>
 

@@ -1,5 +1,6 @@
 
 <template>
+  <div class="user-data">{{ userState.name }} @{{ userState.username }}</div>
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
@@ -9,11 +10,26 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { processIf } from "@vue/compiler-core";
+import { reactive, provide } from "vue";
+
+const userState = reactive({
+  name: "Eder Sena",
+  username: "ederusena",
+});
+
+provide("userState", userState);
 </script>
 
 <style>
-@import '@/assets/base.css';
+@import "@/assets/base.css";
+.user-data {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  padding: 5px;
+}
 
 #app {
   max-width: 1280px;

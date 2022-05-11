@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   showVModal: {
     type: Boolean,
     default: false,
