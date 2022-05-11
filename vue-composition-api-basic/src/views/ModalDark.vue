@@ -1,6 +1,6 @@
 <template>
 	<teleport to=".modals-container">
-		<div class="modal">
+		<div class="modal-dark">
 			<h1>{{ title }}</h1>
 			<!-- <h1><slot name="title" /></h1> -->
 			<slot />
@@ -49,9 +49,9 @@ const handleButtonClick = () => {
 </script>
 
 <style>
-.modal {
-	background: var(--vt-c-white-soft);
-	color: var(--vt-c-black-soft);
+.modal-dark {
+	background: var(--vt-c-black-soft);
+	color: var(--vt-c-white-soft);
 	padding: 10px;
 	position: absolute;
 	left: 0;
