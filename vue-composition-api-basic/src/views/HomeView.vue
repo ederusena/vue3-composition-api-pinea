@@ -5,7 +5,7 @@
     <div>
       <button @click="decreaseCounter" class="btn">-</button>
       <span class="counter">{{ counterData.count }}</span>
-      <button @click="increaseCounter" class="btn">+</button>
+      <button @click="increaseCounter(1)" class="btn">+</button>
     </div>
 
     <div class="edit">
@@ -16,90 +16,39 @@
 </template>
 
 <script setup>
+/**
+ * imports
+ */
 import {
   ref,
-  reactive,
-  computed,
-  watch,
   onMounted,
-  nextTick
 } from "vue";
-
+import { useCounter } from "@/use/useCounter";
 import { vAutoFocus } from "@/directives/vAutoFocus";
+
+/**
+ * data
+ */
 const appTitle = "My Awesome App";
-
-const counterData = reactive({
-  count: 0,
-  title: "My counter",
-});
-
 const appTitleRef = ref(null);
 
-watch(
-  () => counterData.count,
-  (newCount, oldCount) => {
-    if (newCount === 20) {
-      alert("20 is the limit!");
-    }
-  }
-);
+/**
+ * counter Composable Hook
+ */
+ const {
+  counterData,
+    oddOrEven,
+    increaseCounter,
+    decreaseCounter
+  } = useCounter();
 
+/**
+ * life cycle hooks
+ */
 onMounted(() => {
   console.log(`The app title is ${appTitleRef.value.offsetWidth} px wide!`);
 });
 
-const oddOrEven = computed(() => {
-  return counterData.count % 2 === 0 ? "even" : "odd";
-});
-
-const increaseCounter = () => {
-  counterData.count++;
-  nextTick(() => {
-    console.log("Next tick! -> So something whencounter has updated in the dom");
-  })
-}
-const decreaseCounter = () => counterData.count--;
-
-// onBeforeMount(() => {
-//   console.log('before mount')
-// })
-
-// onMounted(() => {
-//   console.log('mounted')
-// })
-
-// onBeforeUnmount(() => {
-//   console.log('before unmount')
-// })
-
-// onUnmounted(() => {
-//   console.log('unmounted')
-// })
-
-// onActivated(() => {
-//   console.log('activated')
-// })
-
-// onDeactivated(() => {
-//   console.log('deactivated')
-// })
-
-// onBeforeUpdate(() => {
-//   console.log('before update')
-// })
-
-// onUpdated(() => {
-//   console.log('updated')
-// })
-
-// /*
-//   Directives
-// */
-// const vAutoFocus = {
-//   mounted(el) {
-//     el.focus()
-//   }
-// }
 </script>
 
 <style>
