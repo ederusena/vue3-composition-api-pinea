@@ -38,7 +38,6 @@
  */
 import { ref } from "vue";
 import Modal from "@/components/Modal.vue";
-import ModalDark from "@/components/ModalDark.vue";
 import ModalVModel from "@/components/ModalVModel.vue";
 import ModalVModelDark from "@/components/ModalVModelDark.vue";
 
