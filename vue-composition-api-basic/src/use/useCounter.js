@@ -1,11 +1,20 @@
 import { reactive, computed, watch, nextTick, onMounted } from "vue";
 
-export function useCounter() {
-
-  const counterData = reactive({
+// neste local o state fica disponivel para todos os componentes
+// mesmo se trocar de componente
+const counterData = reactive({
     count: 0,
     title: "My counter",
   });
+
+export function useCounter() {
+
+  // nesse ponto counterData ficará disponivel para o component, enquanto estiver na pagina
+  // se trocar ou reloadar a pagina, o counterData será zerado
+  // const counterData = reactive({
+  //   count: 0,
+  //   title: "My counter",
+  // });
 
   watch(
     () => counterData.count,
