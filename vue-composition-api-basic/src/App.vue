@@ -1,6 +1,12 @@
 
 <template>
-  <div class="user-data">{{ userState.name }} @{{ userState.username }}</div>
+  <div class="user-data">
+    {{ userState.name }} @{{ userState.username }} |
+    Network status:
+    <span :style="{ color: online ? 'green' : 'red'}">
+      {{ online ? 'Online' : 'Offline'}}
+    </span>
+  </div>
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
@@ -12,6 +18,12 @@
 <script setup>
 import { processIf } from "@vue/compiler-core";
 import { reactive, provide } from "vue";
+import { useOnline } from '@vueuse/core'
+
+/**
+ * UseVue
+ */
+const online = useOnline()
 
 const userState = reactive({
   name: "Eder Sena",
