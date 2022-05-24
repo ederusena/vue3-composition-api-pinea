@@ -36,7 +36,12 @@ export function useCounter() {
     })
   }
 
-  const decreaseCounter = () => counterData.count--;
+  const decreaseCounter = async (amount = 1, e) => {
+    counterData.count -= amount;
+    await nextTick(() => {
+      console.log("Next tick! -> So something whencounter has updated in the dom");
+    })
+  }
 
   onMounted(() => {
     console.log("Counter mounted!");

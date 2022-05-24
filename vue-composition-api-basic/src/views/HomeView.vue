@@ -3,7 +3,7 @@
     <h3 ref="appTitleRef">{{ appTitle }}</h3>
     <h4>{{ counterData.title }}</h4>
     <div>
-      <button @click="decreaseCounter" class="btn">-</button>
+      <button @click="decreaseCounter(1)" class="btn">-</button>
       <span class="counter">{{ counterData.count }}</span>
       <button @click="increaseCounter(1)" class="btn">+</button>
     </div>
